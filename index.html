@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rosaria Fulco — Media Buyer & Content Creator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gold: #F1B353;    /* logo mark only */
+    --purple: #A382F5;  /* logo mark only */
+    --teal: #6ADBB2;    /* the one site accent */
+    --bg: #0A0908;
+    --bg-deep: #000000;
+    --surface: #16140F;
+    --ink: #F5F3EE;
+    --muted: #9C978C;
+    --line: rgba(255,255,255,0.10);
+
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--body);
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{ max-width:100%; display:block; }
+  a{ color:inherit; text-decoration:none; }
+  .container{ max-width:1080px; margin:0 auto; padding:0 28px; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ scroll-behavior:auto !important; transition:none !important; animation:none !important; }
+  }
+
+  /* ---------- NEON HELPERS ---------- */
+  .neon-text{
+    color: var(--teal);
+    text-shadow:
+      0 0 5px rgba(106,219,178,0.85),
+      0 0 14px rgba(106,219,178,0.5),
+      0 0 30px rgba(106,219,178,0.3);
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(10,9,8,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 28px;
+    max-width:1080px; margin:0 auto;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:var(--display); font-weight:700; font-size:16px; letter-spacing:0.01em;
+    color:var(--ink);
+  }
+  /* the logo mark keeps all three original brand colors — everywhere else on the site uses teal only */
+  .brand .marks{ display:flex; gap:3px; }
+  .brand .marks span{ width:8px; height:8px; border-radius:2px; }
+  .brand .marks span:nth-child(1){ background:var(--gold); }
+  .brand .marks span:nth-child(2){ background:var(--teal); }
+  .brand .marks span:nth-child(3){ background:var(--purple); }
+
+  nav.links{ display:flex; gap:28px; font-size:13.5px; font-weight:500; }
+  nav.links a{ color:var(--muted); transition:color .15s ease; }
+  nav.links a:hover{ color:var(--teal); }
+
+  .btn{
+    font-family:var(--body);
+    font-weight:600;
+    font-size:13.5px;
+    padding:11px 20px;
+    display:inline-block;
+    border:2px solid var(--teal);
+    background:var(--teal);
+    color:var(--bg-deep);
+    box-shadow:0 0 8px rgba(106,219,178,0.35), 0 0 20px rgba(106,219,178,0.18);
+    transition: transform .15s ease, box-shadow .15s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 14px rgba(106,219,178,0.6), 0 0 36px rgba(106,219,178,0.35);
+  }
+
+  @media (max-width: 760px){
+    nav.links{ display:none; }
+  }
+
+  /* ---------- EYEBROW / TIMECODE ---------- */
+  .eyebrow{
+    display:flex; align-items:center; gap:10px;
+    font-family:var(--mono); font-size:12px; letter-spacing:0.08em;
+    color:var(--muted); text-transform:uppercase;
+    margin-bottom:20px;
+  }
+  .eyebrow .rec{
+    width:7px; height:7px; border-radius:50%;
+    background:var(--teal);
+    box-shadow:0 0 0 3px rgba(106,219,178,0.18);
+    animation: recPulse 2.2s ease-in-out infinite;
+  }
+  @keyframes recPulse{
+    0%, 100%{ transform:scale(1); opacity:1; }
+    50%{ transform:scale(1.5); opacity:0.65; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding:96px 0 80px; background:var(--bg); }
+  .hero h1{
+    font-family:var(--display);
+    font-weight:700;
+    font-size: clamp(34px, 5.4vw, 58px);
+    line-height:1.1;
+    letter-spacing:-0.01em;
+    margin:0 0 40px;
+    max-width:780px;
+    color:var(--ink);
+  }
+  .hero h1 .glow{
+    color: var(--teal);
+    text-shadow:
+      0 0 6px rgba(106,219,178,0.9),
+      0 0 18px rgba(106,219,178,0.55),
+      0 0 44px rgba(106,219,178,0.35),
+      0 0 80px rgba(106,219,178,0.18);
+    animation: flicker 4.5s ease-in-out infinite;
+  }
+  @keyframes flicker{
+    0%, 19%, 21%, 23%, 54%, 56%, 100%{ opacity:1; }
+    20%, 22%, 55%{ opacity:0.78; }
+  }
+  .cta-row{ display:flex; gap:16px; flex-wrap:wrap; margin-bottom:48px; }
+
+  .meta-row{
+    display:flex; flex-wrap:wrap; gap:40px;
+    border-top:1px solid var(--line);
+    padding-top:24px;
+  }
+  .meta-item .k{
+    font-family:var(--mono); font-size:10.5px; letter-spacing:0.08em;
+    color:var(--muted); text-transform:uppercase; margin-bottom:5px;
+  }
+  .meta-item .v{ font-size:14px; font-weight:600; color:var(--ink); }
+
+  /* ---------- ABOUT ---------- */
+  .about{
+    background:var(--bg-deep); color:var(--ink);
+    padding:90px 0;
+  }
+  .about .eyebrow{ color:rgba(255,255,255,0.5); }
+  .about p.lead{
+    font-family:var(--display); font-weight:500;
+    font-size: clamp(20px, 2.6vw, 27px);
+    line-height:1.5;
+    max-width:760px;
+    margin:0;
+  }
+  .about p.lead .hi,
+  .about p.lead .hi2{
+    color: var(--teal);
+    text-shadow:
+      0 0 5px rgba(106,219,178,0.8),
+      0 0 16px rgba(106,219,178,0.45),
+      0 0 34px rgba(106,219,178,0.25);
+  }
+
+  .tags{ display:flex; flex-wrap:wrap; gap:10px; margin-top:40px; }
+  .tag-pill{
+    font-family:var(--mono); font-size:11px; letter-spacing:0.05em;
+    padding:8px 14px; border:1px solid rgba(255,255,255,0.2);
+    color:rgba(255,255,255,0.8);
+  }
+  .tag-pill.hl{
+    border-color:var(--teal); color:var(--teal);
+    text-shadow:0 0 6px rgba(106,219,178,0.6);
+    box-shadow:0 0 10px rgba(106,219,178,0.25);
+  }
+
+  /* ---------- SERVICES ---------- */
+  .services{ padding:90px 0; background:var(--bg); }
+  .services h2{
+    font-family:var(--display); font-weight:700;
+    font-size:clamp(26px,3.4vw,36px);
+    margin:0 0 44px;
+  }
+
+  .primary-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:24px;
+    margin-bottom:56px;
+  }
+  @media (max-width:760px){ .primary-grid{ grid-template-columns:1fr; } }
+
+  .service-card{
+    border:1px solid var(--line);
+    padding:32px 28px;
+    position:relative;
+    background:var(--surface);
+    box-shadow:0 0 0 1px rgba(106,219,178,0.15), 6px 6px 0 rgba(106,219,178,0.5);
+  }
+  .service-card .num{
+    font-family:var(--mono); font-size:12px; color:var(--muted); margin-bottom:14px;
+  }
+  .service-card h3{
+    font-family:var(--display); font-size:20px; margin:0 0 12px; color:var(--ink);
+  }
+  .service-card p{ font-size:14.5px; line-height:1.6; color:var(--muted); margin:0; }
+
+  .supporting{
+    border-top:1px solid var(--line); padding-top:32px;
+  }
+  .supporting .label{
+    font-family:var(--mono); font-size:11px; letter-spacing:0.08em;
+    color:var(--muted); text-transform:uppercase; margin-bottom:18px;
+  }
+  .supporting-list{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
+  }
+  @media (max-width:760px){ .supporting-list{ grid-template-columns:1fr 1fr; } }
+  .supporting-list div{
+    font-size:14px; font-weight:500; padding:14px 0;
+    border-top:2px solid var(--teal); color:var(--ink);
+  }
+
+  /* ---------- PILOT BAND ---------- */
+  .pilot{
+    background:var(--surface);
+    border-top:1px solid var(--teal); border-bottom:1px solid var(--teal);
+    color:var(--ink);
+    padding:36px 0;
+  }
+  .pilot .inner{
+    display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
+  }
+  .pilot p{
+    font-family:var(--display); font-weight:500;
+    font-size:16.5px; line-height:1.5; margin:0; max-width:640px;
+  }
+
+  /* ---------- WORK ---------- */
+  .work{ padding:90px 0; background:var(--bg); }
+  .work h2{ font-family:var(--display); font-weight:700; font-size:clamp(26px,3.4vw,36px); margin:0 0 10px; }
+  .work .intro{ color:var(--muted); font-size:15px; max-width:520px; margin:0 0 24px; }
+
+  .legend{ display:flex; gap:22px; margin-bottom:36px; font-family:var(--mono); font-size:11px; color:var(--muted); flex-wrap:wrap; }
+  .legend span{ display:flex; align-items:center; gap:7px; }
+  .swatch{ width:10px; height:10px; }
+  .swatch.ad{ background:var(--teal); }
+  .swatch.organic{ background:transparent; border:1.5px solid var(--teal); opacity:0.5; }
+
+  .work-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:20px;
+  }
+  .work-card{
+    border:1px solid var(--line); background:var(--surface);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .work-card:hover{ transform:translateY(-3px); box-shadow:0 0 0 1px rgba(106,219,178,0.3), 0 0 24px rgba(106,219,178,0.25); }
+
+  .thumb{
+    position:relative; aspect-ratio:9/16; background:var(--bg-deep); overflow:hidden;
+  }
+  .thumb iframe{ width:100%; height:100%; border:0; }
+  .thumb.upload{
+    background:var(--bg); border:2px dashed rgba(255,255,255,0.15);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .upload-label{
+    font-family:var(--mono); font-size:10.5px; color:var(--muted); text-align:center; padding:0 18px; letter-spacing:0.05em;
+  }
+
+  .tag{
+    position:absolute; top:9px; right:9px; z-index:2;
+    font-family:var(--mono); font-size:9.5px; letter-spacing:0.07em;
+    padding:4px 8px; text-transform:uppercase;
+  }
+  .tag.ad{ background:var(--teal); color:var(--bg-deep); font-weight:700; }
+  .tag.organic{ border:1px solid var(--teal); color:var(--teal); background:rgba(0,0,0,0.6); opacity:0.75; }
+  .tag.pending{ border:1px dashed var(--teal); color:var(--teal); background:var(--bg-deep); }
+
+  .wmeta{ padding:14px 16px 18px; }
+  .wmeta .platform{ font-size:13.5px; font-weight:600; margin:0 0 3px; color:var(--ink); }
+  .wmeta .format{ font-family:var(--mono); font-size:10px; color:var(--muted); margin:0 0 10px; }
+  .wmeta .note{ font-size:12.5px; color:#B9B4A8; line-height:1.5; margin:0; }
+  .wmeta .note em{ font-style:normal; color:#68635A; }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testimonials{ padding:90px 0; background:var(--bg-deep); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .testimonials h2{ font-family:var(--display); font-weight:700; font-size:clamp(26px,3.4vw,36px); margin:0 0 40px; }
+  .t-grid{ display:flex; flex-wrap:wrap; gap:24px; }
+  .t-card{ width:240px; }
+  .t-card iframe{ width:100%; aspect-ratio:9/16; border:0; background:var(--bg); }
+  .t-name{
+    margin-top:14px; font-family:var(--mono); font-size:11.5px; letter-spacing:0.05em; color:var(--muted);
+  }
+  .t-name b{ color:var(--ink); font-family:var(--body); font-size:13.5px; }
+
+  /* ---------- CONTACT ---------- */
+  .contact{ background:var(--bg); color:var(--ink); padding:110px 0 70px; text-align:center; }
+  .contact h2{
+    font-family:var(--display); font-weight:700;
+    font-size:clamp(30px,5vw,48px); margin:0 0 30px; line-height:1.15;
+  }
+  .contact h2 .accent{
+    color: var(--teal);
+    text-shadow:
+      0 0 6px rgba(106,219,178,0.9),
+      0 0 18px rgba(106,219,178,0.55),
+      0 0 44px rgba(106,219,178,0.3);
+    animation: flicker 4.5s ease-in-out infinite;
+  }
+  .contact-links{ display:flex; gap:18px; justify-content:center; flex-wrap:wrap; margin-bottom:70px; }
+
+  footer{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+    border-top:1px solid var(--line); padding-top:26px;
+    font-family:var(--mono); font-size:11px; letter-spacing:0.05em; color:rgba(255,255,255,0.4);
+  }
+
+  /* ---------- STICKY CTA ---------- */
+  .sticky-cta{
+    position:fixed;
+    right:22px; bottom:22px;
+    z-index:70;
+    border:2px solid var(--teal);
+    background:var(--teal);
+    color:var(--bg-deep);
+    font-family:var(--body);
+    font-weight:600;
+    font-size:13.5px;
+    padding:13px 22px;
+    animation: ctaGlow 3s ease-in-out infinite;
+    transition: transform .15s ease;
+  }
+  .sticky-cta:hover{
+    transform:translateY(-2px);
+  }
+  @keyframes ctaGlow{
+    0%, 100%{ box-shadow:0 0 10px rgba(106,219,178,0.45), 0 0 26px rgba(106,219,178,0.22); }
+    50%{ box-shadow:0 0 18px rgba(106,219,178,0.8), 0 0 44px rgba(106,219,178,0.4); }
+  }
+  @media (max-width:600px){
+    .sticky-cta{ right:16px; bottom:16px; padding:12px 18px; font-size:13px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <span class="marks"><span></span><span></span><span></span></span>
+      ROSARIA.FULCO
+    </div>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="https://calendly.com/rosa-in-text-proton/30min" class="btn">Book a call</a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow"><span class="rec"></span>00:00:00 — REC</div>
+    <h1>
+      Get more bookings with <span class="glow">higher quality ads.</span>
+    </h1>
+    <div class="cta-row">
+      <a href="#contact" class="btn">Grow your business →</a>
+      <a href="#work" class="btn">See the work</a>
+    </div>
+    <div class="meta-row">
+      <div class="meta-item"><div class="k">Based</div><div class="v">Remote, worldwide</div></div>
+      <div class="meta-item"><div class="k">Focus</div><div class="v">Media Buying · Ad Creative · Content</div></div>
+      <div class="meta-item"><div class="k">Languages</div><div class="v">EN · IT · FR · RU</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="eyebrow"><span class="rec"></span>00:01:12 — ABOUT</div>
+    <p class="lead">
+      Your campaigns are dry because your creatives are WEAK. Nobody's signing up with your current setup —
+      because <span class="hi">they don't TRUST you.</span> And the way you build that trust is with
+      high-quality content, so people finally recognize you for
+      <span class="hi2">the expert you actually are.</span>
+    </p>
+    <div class="tags">
+      <span class="tag-pill hl">FACEBOOK &amp; INSTAGRAM ADS</span>
+      <span class="tag-pill">SOCIAL STRATEGY</span>
+      <span class="tag-pill">SHORT-FORM EDITING</span>
+      <span class="tag-pill">COPYWRITING</span>
+      <span class="tag-pill">CAPCUT</span>
+      <span class="tag-pill">ADOBE CREATIVE CLOUD</span>
+      <span class="tag-pill">CANVA</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="eyebrow"><span class="rec"></span>00:02:40 — SERVICES</div>
+    <h2 class="neon-text">What I bring to a project</h2>
+
+    <div class="primary-grid">
+      <div class="service-card">
+        <div class="num">01 — PRIMARY</div>
+        <h3>Ad Campaign Management</h3>
+        <p>Facebook &amp; Instagram setup, targeting, and ongoing optimization, paired with fresh creative built specifically to be tested against each other.</p>
+      </div>
+      <div class="service-card">
+        <div class="num">02 — PRIMARY</div>
+        <h3>Ad Creative Production</h3>
+        <p>Short-form edits, hooks, and ad copy made for paid media, not repurposed organic content.</p>
+      </div>
+    </div>
+
+    <div class="supporting">
+      <div class="label">Also available</div>
+      <div class="supporting-list">
+        <div>Social Media Management</div>
+        <div>Content Calendars &amp; Planning</div>
+        <div>Copywriting</div>
+        <div>SEO &amp; Digital Marketing Support</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PILOT BAND ================= -->
+<section class="pilot">
+  <div class="container">
+    <div class="inner">
+      <p>Currently taking on a limited number of pilot campaigns — a lower-cost way to test creative-led ad management together before scaling up.</p>
+      <a href="#contact" class="btn">Book a call →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WORK ================= -->
+<section class="work" id="work">
+  <div class="container">
+    <div class="eyebrow"><span class="rec"></span>00:04:05 — WORK</div>
+    <h2 class="neon-text">Selected work</h2>
+    <p class="intro">A mix of paid ad creative and organic content — each one labeled, so you know exactly what you're looking at.</p>
+
+    <div class="legend">
+      <span><span class="swatch ad"></span>PAID AD — ran as tested campaign creative</span>
+      <span><span class="swatch organic"></span>ORGANIC — brand / personal content</span>
+    </div>
+
+    <div class="work-grid">
+
+      <!-- 1: real ad -->
+      <div class="work-card">
+        <div class="thumb">
+          <span class="tag ad">Paid Ad</span>
+          <iframe src="https://player.vimeo.com/video/1221081390?title=0&amp;byline=0&amp;portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="wmeta">
+          <p class="platform">Facebook Ad — Home Renovation</p>
+          <p class="format">VERTICAL · PAID CAMPAIGN</p>
+        </div>
+      </div>
+
+      <!-- 2: new ad -->
+      <div class="work-card">
+        <div class="thumb">
+          <span class="tag ad">Paid Ad</span>
+          <iframe src="https://player.vimeo.com/video/1221076770?title=0&amp;byline=0&amp;portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="wmeta">
+          <p class="platform">Facebook Ad — Marketing Services</p>
+          <p class="format">VERTICAL · PAID CAMPAIGN</p>
+        </div>
+      </div>
+
+      <!-- 3: organic -->
+      <div class="work-card">
+        <div class="thumb">
+          <span class="tag organic">Organic</span>
+          <iframe src="https://player.vimeo.com/video/1221076769?title=0&amp;byline=0&amp;portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="wmeta">
+          <p class="platform">Organic Content — Podcast Editing</p>
+          <p class="format">VERTICAL</p>
+        </div>
+      </div>
+
+      <!-- 4: organic -->
+      <div class="work-card">
+        <div class="thumb">
+          <span class="tag organic">Organic</span>
+          <iframe src="https://player.vimeo.com/video/1221076768?title=0&amp;byline=0&amp;portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="wmeta">
+          <p class="platform">Organic Content — Money Coaching</p>
+          <p class="format">VERTICAL</p>
+        </div>
+      </div>
+
+      <!-- 5: organic -->
+      <div class="work-card">
+        <div class="thumb">
+          <span class="tag organic">Organic</span>
+          <iframe src="https://player.vimeo.com/video/1221076984?title=0&amp;byline=0&amp;portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="wmeta">
+          <p class="platform">Organic Content — YouTube Channel</p>
+          <p class="format">VERTICAL</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="eyebrow"><span class="rec"></span>00:04:50 — TESTIMONIALS</div>
+    <h2 class="neon-text">What clients say</h2>
+    <div class="t-grid">
+      <div class="t-card">
+        <iframe src="https://drive.google.com/file/d/19oifhIGRn9e9PJq2wUqOCLNU49YeIfqn/preview" allow="autoplay"></iframe>
+        <div class="t-name">CLIENT TESTIMONIAL — <b>Davide G.</b></div>
+      </div>
+      <div class="t-card">
+        <iframe src="https://drive.google.com/file/d/1uZIreqF1l23AE9vup6wqBHoop6hefuaT/preview" allow="autoplay"></iframe>
+        <div class="t-name">CLIENT TESTIMONIAL — <b>Sige N.</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="eyebrow" style="justify-content:center;color:rgba(255,255,255,0.5);"><span class="rec"></span>00:05:30 — CONTACT</div>
+    <h2>Got a project in mind? <br>Let's <span class="accent">cut</span> to it.</h2>
+    <div class="contact-links">
+      <a href="mailto:rosa.in.text@proton.me" class="btn">rosa.in.text@proton.me →</a>
+      <a href="https://calendly.com/rosa-in-text-proton/30min" class="btn">Book a call →</a>
+    </div>
+    <footer>
+      <span>© 2026 ROSARIA FULCO</span>
+      <span>REMOTE / WORLDWIDE</span>
+    </footer>
+  </div>
+</section>
+
+<a href="https://calendly.com/rosa-in-text-proton/30min" class="sticky-cta">Book a call →</a>
+
+</body>
+</html>
